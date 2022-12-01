@@ -1,0 +1,31 @@
+{% extends 'todoList/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+  <div class="container-fluid p-5">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <div class="card px-0 mb-3">
+          <!-- Card Header -->
+          <div class="card-header">
+            <span>Update Task</span>
+          </div>
+
+          <!-- Card Body -->
+          <form class="card-body" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary my-3">
+              <i class="fa-regular fa-pen-to-square"></i> Update
+            </button>
+          </form>
+        </div>
+
+        <!-- Back Button -->
+        <a href="../.." class="btn btn-warning">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- Task -->
+<div class="rounded shadow p-3 my-2 bg-white">
+  <div class="row">
+    <!-- Task Name and Creation Date -->
+    <div class="col-md-8">
+      <!-- Task Name -->
+      <h5>{{ task.task_name }}</h5>
+
+      <!-- Date Created / Edited -->
+      <p class="my-1"><small>Created: {{ task.created_at }}</small></p>
+      {% if task.created_at != task.edited_at %}
+        <p class="my-1"><small>Edited: {{ task.edited_at }}</small></p>
+      {% endif %}
+    </div>
+
+    <!-- Task Controls -->
+    <div class="col-md-4 d-flex justify-content-lg-end align-items-start">
+      <!-- Edit Task -->
+      <a href="update/{{ task.id }}" class="btn btn-outline-primary m-1">
+        <i class="fa-regular fa-pen-to-square"></i>
+      </a>
+
+      <!-- Delete Task -->
+      <a href="delete/{{ task.id }}" class="btn btn-outline-danger m-1">
+        <i class="fa-solid fa-xmark"></i>
+      </a>
+    </div>
+  </div>
+</div>

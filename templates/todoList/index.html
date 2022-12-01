@@ -1,0 +1,30 @@
+{% extends 'todoList/base.html' %}
+
+{% block body %}
+  <div class="container-fluid py-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <!-- Page Header -->
+        <h1 class="text-center display-4 text-primary">TODO-LIST</h1>
+
+        <!-- Search Bar -->
+        <form class="input-group mb-3" action='{% url 'index'%}' method="get">
+          <input type="text" class="form-control" name="search" placeholder="Search tasks" value="{{ previous_search }}">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </button>
+        </form>
+
+        <!-- Tasks -->
+        {% for task in tasks %}
+          {% include 'todoList/task.html' with task=task %}
+          {% empty %}
+            <h3>No items found with your search term, or there have been no tasks added yet.</h3>
+        {% endfor %}
+
+        <!-- Add Task button -->
+        <a class="btn btn-success" href="add"><i class="fa-solid fa-plus"></i> Add a new task</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
