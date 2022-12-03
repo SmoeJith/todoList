@@ -8,7 +8,7 @@
 
       <!-- Date Created / Edited -->
       <p class="my-1"><small>Created: {{ task.created_at }}</small></p>
-      {% if task.created_at != task.edited_at %}
+      {% if task.edited_at %}
         <p class="my-1"><small>Edited: {{ task.edited_at }}</small></p>
       {% endif %}
     </div>

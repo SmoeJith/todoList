@@ -1,3 +1,5 @@
+import datetime
+
 from .models import Todo
 from .forms import TaskForm
 from django.shortcuts import render, redirect
@@ -26,6 +28,7 @@ def update(request, id):
     task = Todo.objects.get(id=id)
     form = TaskForm(request.POST or None, instance=task)
     if form.is_valid():
+        task.edited_at = datetime.datetime.utcnow()
         form.save()
         return redirect('../../')
     return render(request, 'todoList/update.html', {'form': form})
